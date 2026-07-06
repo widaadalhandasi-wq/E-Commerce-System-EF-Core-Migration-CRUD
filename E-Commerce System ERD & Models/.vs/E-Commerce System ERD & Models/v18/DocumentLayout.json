@@ -1,0 +1,54 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\widaa\\OneDrive\\Desktop\\Backend-Soultion\\Bakend-System-ERD-Models\\E-Commerce System ERD \u0026 Models\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{40FD0BFF-B503-DA17-F64E-1387CAB8B804}|E-Commerce System ERD \u0026 Models.csproj|c:\\users\\widaa\\onedrive\\desktop\\backend-soultion\\bakend-system-erd-models\\e-commerce system erd \u0026 models\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{40FD0BFF-B503-DA17-F64E-1387CAB8B804}|E-Commerce System ERD \u0026 Models.csproj|solutionrelative:models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{40FD0BFF-B503-DA17-F64E-1387CAB8B804}|E-Commerce System ERD \u0026 Models.csproj|c:\\users\\widaa\\onedrive\\desktop\\backend-soultion\\bakend-system-erd-models\\e-commerce system erd \u0026 models\\enum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{40FD0BFF-B503-DA17-F64E-1387CAB8B804}|E-Commerce System ERD \u0026 Models.csproj|solutionrelative:enum.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Order.cs",
+              "DocumentMoniker": "C:\\Users\\widaa\\OneDrive\\Desktop\\Backend-Soultion\\Bakend-System-ERD-Models\\E-Commerce System ERD \u0026 Models\\Models\\Order.cs",
+              "RelativeDocumentMoniker": "Models\\Order.cs",
+              "ToolTip": "C:\\Users\\widaa\\OneDrive\\Desktop\\Backend-Soultion\\Bakend-System-ERD-Models\\E-Commerce System ERD \u0026 Models\\Models\\Order.cs",
+              "RelativeToolTip": "Models\\Order.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAQwCMAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-01T11:05:23.795Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Enum.cs",
+              "DocumentMoniker": "C:\\Users\\widaa\\OneDrive\\Desktop\\Backend-Soultion\\Bakend-System-ERD-Models\\E-Commerce System ERD \u0026 Models\\Enum.cs",
+              "RelativeDocumentMoniker": "Enum.cs",
+              "ToolTip": "C:\\Users\\widaa\\OneDrive\\Desktop\\Backend-Soultion\\Bakend-System-ERD-Models\\E-Commerce System ERD \u0026 Models\\Enum.cs",
+              "RelativeToolTip": "Enum.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-01T11:05:06.068Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
