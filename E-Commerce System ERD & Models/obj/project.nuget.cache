@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "esYb1A/S1V4=",
+  "dgSpecHash": "3FNpgq+KOus=",
   "success": true,
-  "projectFilePath": "C:\\Users\\widaa\\OneDrive\\Desktop\\Backend-Soultion\\Bakend-System-ERD-Models\\E-Commerce System ERD & Models\\E-Commerce System ERD & Models.csproj",
+  "projectFilePath": "C:\\Users\\widaa\\OneDrive\\Desktop\\Backend-Soultion\\E-Commerce System EF Core\\E-Commerce System ERD & Models\\E-Commerce System ERD & Models.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\widaa\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\widaa\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

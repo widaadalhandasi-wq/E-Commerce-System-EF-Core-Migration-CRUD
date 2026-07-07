@@ -4113,11 +4113,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\widaa\\OneDrive\\Desktop\\Backend-Soultion\\Bakend-System-ERD-Models\\E-Commerce System ERD & Models\\E-Commerce System ERD & Models.csproj",
+      "projectUniqueName": "C:\\Users\\widaa\\OneDrive\\Desktop\\Backend-Soultion\\E-Commerce System EF Core\\E-Commerce System ERD & Models\\E-Commerce System ERD & Models.csproj",
       "projectName": "E-Commerce System ERD & Models",
-      "projectPath": "C:\\Users\\widaa\\OneDrive\\Desktop\\Backend-Soultion\\Bakend-System-ERD-Models\\E-Commerce System ERD & Models\\E-Commerce System ERD & Models.csproj",
+      "projectPath": "C:\\Users\\widaa\\OneDrive\\Desktop\\Backend-Soultion\\E-Commerce System EF Core\\E-Commerce System ERD & Models\\E-Commerce System ERD & Models.csproj",
       "packagesPath": "C:\\Users\\widaa\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\widaa\\OneDrive\\Desktop\\Backend-Soultion\\Bakend-System-ERD-Models\\E-Commerce System ERD & Models\\obj\\",
+      "outputPath": "C:\\Users\\widaa\\OneDrive\\Desktop\\Backend-Soultion\\E-Commerce System EF Core\\E-Commerce System ERD & Models\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

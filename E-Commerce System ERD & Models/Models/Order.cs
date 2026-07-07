@@ -47,6 +47,6 @@ namespace E_Commerce_System_ERD___Models.Models
         public User user { get; set; } //Navigation Property =>order must be associated with exactly one user
 
         //many to many 
-        public  List<OrderProduct> OrderProducts { get; set; } //Navigation Property => order can hve many order products
+        public  List<OrderItem> orderItems { get; set; } //Navigation Property => order can hve many order products
     }
 }

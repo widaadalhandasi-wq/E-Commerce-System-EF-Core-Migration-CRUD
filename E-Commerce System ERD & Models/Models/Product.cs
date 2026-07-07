@@ -41,7 +41,7 @@ namespace E_Commerce_System_ERD___Models.Models
         public bool isAvailable { get; set; } = true;   //default value
 
         //many to many 
-        public List<OrderProduct> OrderProducts { get; set; } //Navigation Property => product can hve many order products
+        public List<OrderItem> OrderItems { get; set; } //Navigation Property => product can hve many order products
 
         [ForeignKey("Category")]
         public int categoryId { get; set; }  // user input

@@ -89,13 +89,13 @@ namespace E_Commerce_System_ERD___Models.Migrations
                     b.ToTable("Order");
                 });
 
-            modelBuilder.Entity("E_Commerce_System_ERD___Models.Models.OrderProduct", b =>
+            modelBuilder.Entity("E_Commerce_System_ERD___Models.Models.OrderItem", b =>
                 {
-                    b.Property<int>("orderProduct")
+                    b.Property<int>("orderItem")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("orderProduct"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("orderItem"));
 
                     b.Property<int>("orderId")
                         .HasColumnType("int");
@@ -106,13 +106,16 @@ namespace E_Commerce_System_ERD___Models.Migrations
                     b.Property<int>("quantity")
                         .HasColumnType("int");
 
-                    b.HasKey("orderProduct");
+                    b.Property<decimal>("unitPrice")
+                        .HasColumnType("decimal(10,2)");
+
+                    b.HasKey("orderItem");
 
                     b.HasIndex("orderId");
 
                     b.HasIndex("productId");
 
-                    b.ToTable("OrderProducts");
+                    b.ToTable("OrderItem");
                 });
 
             modelBuilder.Entity("E_Commerce_System_ERD___Models.Models.Product", b =>
@@ -255,16 +258,16 @@ namespace E_Commerce_System_ERD___Models.Migrations
                     b.Navigation("user");
                 });
 
-            modelBuilder.Entity("E_Commerce_System_ERD___Models.Models.OrderProduct", b =>
+            modelBuilder.Entity("E_Commerce_System_ERD___Models.Models.OrderItem", b =>
                 {
                     b.HasOne("E_Commerce_System_ERD___Models.Models.Order", "Order")
-                        .WithMany("OrderProducts")
+                        .WithMany("orderItems")
                         .HasForeignKey("orderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("E_Commerce_System_ERD___Models.Models.Product", "product")
-                        .WithMany("OrderProducts")
+                        .WithMany("OrderItems")
                         .HasForeignKey("productId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -311,12 +314,12 @@ namespace E_Commerce_System_ERD___Models.Migrations
 
             modelBuilder.Entity("E_Commerce_System_ERD___Models.Models.Order", b =>
                 {
-                    b.Navigation("OrderProducts");
+                    b.Navigation("orderItems");
                 });
 
             modelBuilder.Entity("E_Commerce_System_ERD___Models.Models.Product", b =>
                 {
-                    b.Navigation("OrderProducts");
+                    b.Navigation("OrderItems");
 
                     b.Navigation("Reviews");
                 });
