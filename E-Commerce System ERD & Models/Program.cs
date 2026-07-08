@@ -409,8 +409,9 @@ namespace E_Commerce_System_ERD___Models
             Console.WriteLine("Enter Order Id to cancel:");
             int orderid=int.Parse(Console.ReadLine());
 
-            // Fetch the order by ID using FirstOrDefault()
-            Order order = context.Orders.FirstOrDefault(o => o.orderId== orderid);
+            // load the order along with its related list of order items from the database in a single query by using eager loading --include--
+            Order? order = context.Orders.Include(o => o.orderItems)
+                                        .FirstOrDefault(o => o.orderId== orderid);
             if (order == null)
             {
                 Console.WriteLine("Error:Order Id Not Found.");
@@ -418,10 +419,10 @@ namespace E_Commerce_System_ERD___Models
             }
 
             //Load all OrderItems for that order from context.OrderItems
-            List<OrderItem> items = context.OrderItems.Where(oi => oi.orderId == orderid).ToList();
+            //List<OrderItem> items = context.OrderItems.Where(oi => oi.orderId == orderid).ToList();
 
             // For each OrderItem, find the related product and restore its stockQuantity
-            foreach (OrderItem item in items)
+            foreach (OrderItem item in order.orderItems)
             {
                 // Find the product related to this specific order item
                 Product product = context.Products.FirstOrDefault(p => p.productId == item.productId);
@@ -482,21 +483,25 @@ namespace E_Commerce_System_ERD___Models
         }
         //==================================================================================================
 
-        //9- View All Products (Get All)
 
+        //9- View All Products (Get All)
         public static void ViewAllProducts()
         {
             Console.WriteLine("\n=== All Products ===");
             //Use context.Products.ToList() to retrieve all products
             List<Product> products = context.Products.Include(p => p.Category).ToList();
+
+            //if there is nothing in the product list:
             if (!products.Any())
             {
                 Console.WriteLine("No products found in the catalog.");
                 return;
             }
+
             //Display each product's details in a formatted list
             foreach (Product p in context.Products)
              {
+                // Format availability status as text by using Ternary operator:
                 string availability = p.isAvailable ? "Yes" : "No";
 
                 Console.WriteLine($"ID: {p.productId}  |  {p.productName}  |  Price: {p.price:C}" +
@@ -511,63 +516,223 @@ namespace E_Commerce_System_ERD___Models
         //==================================================================================================
 
         //10- Filter Products by Category and Price Range
+        public static void FilterProducts()
+        {
+            Console.WriteLine("\n=== Filter Products ===");
 
-        public static void FilterProducts() { }
+            //display List of Catogries:
+            List<Category> categories = context.Categories.ToList();
+            Console.WriteLine("Available Categories:");
+            foreach (Category c in categories)
+            {
+                Console.WriteLine($"  ID: {c.categoryId} | Category Name: {c.categoryName}");
+            }
+
+            //user enter the data
+            Console.WriteLine("Enter Catogry Id:");
+            int catogryId = int.Parse(Console.ReadLine());
+
+            // Validation: Check if the entered Category ID actually exists
+            if (!categories.Any(c => c.categoryId == catogryId))
+            {
+                Console.WriteLine("Error: Category Id Not Found.");
+                return;
+            }
+
+            Console.WriteLine("Enter Minimum Price You Want: ");
+            decimal minPrice = decimal.Parse(Console.ReadLine());
+            Console.WriteLine("Enter Maximum Price You Want: ");
+            decimal maxPrice = decimal.Parse(Console.ReadLine());
+
+            //----------------------------------------------------------------
+
+            //Bring the cheapest product by using MinBy()...
+            Product? minProduct = context.Products.Where(p => p.categoryId == catogryId)
+                                                  .OrderBy(p => p.price)
+                                                  .FirstOrDefault();
+            //Bring the expensive product by using MaxBy()...
+            Product ? maxProduct = context.Products.Where(p => p.categoryId == catogryId)
+                                                   .OrderByDescending(p => p.price)
+                                                   .FirstOrDefault();
+
+            //----------------------------------------------------------------
+            //Chain .OrderBy(p => p.price) before .ToList()
+            List<Product> productList = context.Products.Where(p => p.categoryId == catogryId && p.price >= minPrice && p.price <= maxPrice)
+                                                        .OrderBy(p => p.price).ToList();
+
+            //----------------------------------------------------------------
+            // Display the filtered and sorted results
+            Console.WriteLine($"\n=== Filtered Results (Total: {productList.Count}) ===");
+            if (productList.Count == 0)
+            {
+                Console.WriteLine("No products found within this price range.");
+            }
+            else
+            {
+                foreach (Product p in productList)
+                {
+                    Console.WriteLine($"Product: {p.productName} | Price: {p.price:C}");
+                }
+            }
+
+        }
 
         //==================================================================================================
 
         //11 -Get Category with All Its Products (Include)
-        public static void GetCategorywithAllItsProducts() { }
+        public static void GetCategorywithAllItsProducts() 
+        {
+            Console.WriteLine("\n=== Get Category with All Its Products ===");
+
+            //Ask the user for a category ID
+            Console.WriteLine("Enter Catogry Id:");
+            int Id = int.Parse(Console.ReadLine());
+
+            //Use context.Categories.Include(c => c.Products) and chain .FirstOrDefault() o get the SPECIFIC category.
+            Category? chosenCategory = context.Categories.Include(c => c.products)
+                                                   .FirstOrDefault(c => c.categoryId == Id);
+            
+            // Validation: Check if the category exists
+            if (chosenCategory == null)
+            {
+                Console.WriteLine("Error: Category Id Not Found.");
+                return;
+            }
+
+            // Display the category name and description
+            Console.WriteLine($"\nCategory Name: {chosenCategory.categoryName}");
+            Console.WriteLine($"Description: {chosenCategory.description}");
+            Console.WriteLine("------------------------------------------");
+
+
+            // List all its products (No second query fires — category.products is already populated)
+            Console.WriteLine("Products in this category:");
+
+            if (chosenCategory.products == null)
+            {
+                Console.WriteLine("  (No products available in this category)");
+            }
+            else
+            {
+                foreach (Product p in chosenCategory.products)
+                {
+                    Console.WriteLine($"  - Product ID: {p.productId} | Name: {p.productName} | Price: {p.price:C}");
+                }
+            }
+
+        }
 
 
         //==================================================================================================
 
-        //12- View Order History with Full Details (ThenInclude)
 
-        public static void ViewOrderHistory() { }
+        //12- View Order History with Full Details (ThenInclude)
+        public static void ViewOrderHistory()
+        {
+            Console.WriteLine("\n=== View Order History ===");
+            //1- Ask the user for their userId
+            Console.WriteLine("Enter User Id:");
+            int Id = int.Parse(Console.ReadLine());
+
+            //2-Enter to the user Lists , then select the orders for that user , from that order select the order items ,
+            //from that order items select the product , and bring the first user who match the id that entred by user
+            User? user = context.Users.Include(u => u.userOrders).ThenInclude(o => o.orderItems).ThenInclude(i => i.product).FirstOrDefault(u =>u.userId == Id);   //i => item
+
+            // Validation: Check if user exists
+            if (user == null)
+            {
+                Console.WriteLine("Error: User Id Not Found.");
+                return;
+            }
+
+            Console.WriteLine($"\nOrder History for User: {user.fullName} (ID: {user.userId})");
+            Console.WriteLine("==================================================");
+
+
+            // Check if the user has any orders
+            if (user.userOrders == null)
+            {
+                Console.WriteLine("This user hasn't placed any orders yet.");
+                return;
+            }
+
+            // 3. Loop through user.userOrders 
+            foreach (Order o in user.userOrders)
+            {
+                Console.WriteLine($"\n Order ID: {o.orderId} | Date: {o.orderDate} | Status: {o.status} | Total: {o.totalAmount:C}");
+                Console.WriteLine("   Breakdown of Products:");
+
+                // 4. Inside each order, loop through order.orderItems
+                foreach (OrderItem item in o.orderItems)
+                {
+                    // 5. Display item.product.productName and item.unitPrice safely
+                    if (item.product != null)
+                    {
+                        Console.WriteLine($"     - {item.product.productName} (Qty: {item.quantity}) | Unit Price at Purchase: {item.unitPrice:C}");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"     - Unknown Product (Qty: {item.quantity}) | Unit Price at Purchase: {item.unitPrice:C}");
+                    }
+                }
+                Console.WriteLine("   -----------------------------------------------");
+            }
+        }
 
         //==================================================================================================
 
         //13- Product Summary Report (Projection + Lazy Loading)
-        public static void ProductSummaryReport() { }
+        public static void ProductSummaryReport()
+        {
+            Console.WriteLine("\n=== Product Summary Report (Dashboard) ===");
 
+            // Part A: Projection into an anonymous object (Single efficient SQL query)
+            var reportData = context.Products.Select(p => new
+            {
+                ProductName = p.productName,
+                CategoryName = p.Category.categoryName, //  Navigation Property
+                CurrentStock = p.stockQuantity,
+                ReviewCount = p.Reviews.Count(),
+                AvgRating = p.Reviews.Any() ? p.Reviews.Average(r => r.rating) : 0.0
+            }).ToList();
 
+            Console.WriteLine("\n---------------------------------------------------------------------------------");
+            Console.WriteLine($"{"Product Name",-20} | {"Category",-15} | {"Stock",-6} | {"Reviews Count",-13} | {"Avg Rating",-10}");
+            Console.WriteLine("---------------------------------------------------------------------------------");
 
+            foreach (var item in reportData)
+            {
+                Console.WriteLine($"{item.ProductName,-20} | {item.CategoryName,-15} | {item.CurrentStock,-6} | {item.ReviewCount,-13} | {item.AvgRating,-10:F1}");
+            }
 
+            // Part B — Lazy Loading Demo 
+            Console.WriteLine("\n=== Lazy Loading Demonstration ===");
 
+            var singleProduct = context.Products.FirstOrDefault();
 
+            if (singleProduct != null)
+            {
+                Console.WriteLine($"\nFetched Product: {singleProduct.productName}");
+                Console.WriteLine("Notice: No reviews have been loaded from the DB yet...");
 
+                Console.WriteLine("\n[Press Enter to access the Reviews navigation property...]");
+                Console.ReadLine();
 
+                if (singleProduct.Reviews != null && singleProduct.Reviews.Any())
+                {
+                    Console.WriteLine($"--> Successfully lazy-loaded {singleProduct.Reviews.Count()} reviews!");
+                    foreach (Review review in singleProduct.Reviews)
+                    {
+                        Console.WriteLine($"   - Rating: {review.rating} | Comment: {review.comment}");
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("--> This product has no reviews (or lazy loading returned empty).");
+                }
+            }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        }
 
 
 
@@ -631,4 +796,3 @@ namespace E_Commerce_System_ERD___Models
     }
 
     }
-
