@@ -51,8 +51,8 @@ namespace E_Commerce_System_ERD___Models
                 email= email,
                 passwordHash= passwordHash,
                 fullName= fullName,
-                phoneNumber= phone,
-                address= address,
+                phoneNumber = string.IsNullOrWhiteSpace(phone) ? null : phone,
+                address= string.IsNullOrWhiteSpace(address) ? null : address,
                 registrationDate = DateTime.Now,
                 isActive = true
             };
@@ -112,7 +112,8 @@ namespace E_Commerce_System_ERD___Models
             Console.WriteLine("\n=== Add Product ===");
             //Display all categories with context.Categories.ToList()
             List<Category> categories =context.Categories.ToList();
-            foreach(Category c in categories) 
+            Console.WriteLine("Available categories:");
+            foreach (Category c in categories) 
             {
                 Console.WriteLine($"  ID: {c.categoryId}  |  {c.categoryName}  | {c.description} ");
             }
@@ -147,12 +148,12 @@ namespace E_Commerce_System_ERD___Models
             Product newProduct = new Product
             {
                 productName = productName,
-                description= desc,
-                price= price,
-                stockQuantity=stock,
+                description = string.IsNullOrWhiteSpace(desc) ? null : desc,
+                price = price,
+                stockQuantity = stock,
                 createdAt = DateTime.Now,
                 isAvailable = true,
-                Category= category    // set navigation property directly insted of using catogryId , it well read it form the relationship.
+                categoryId = categoryId
             };
 
             //----------------------------------------------
