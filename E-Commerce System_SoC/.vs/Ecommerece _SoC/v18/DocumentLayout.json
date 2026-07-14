@@ -1,12 +1,52 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\hp\\Desktop\\Backend-Soultion\\E-Commerce-System-EF-Core-Migration-CRUD\\E-Commerce System_SoC\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\Users\\widaa\\OneDrive\\Desktop\\Backend-Soultion\\E-Commerce System EF Core\\E-Commerce System_SoC\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{27B7FC87-0F71-4072-889D-91E98F894E22}|..\\First Wep App\\First Wep App.csproj|c:\\users\\widaa\\onedrive\\desktop\\backend-soultion\\e-commerce system ef core\\first wep app\\projectcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\widaa\\OneDrive\\Desktop\\Backend-Soultion\\E-Commerce System EF Core\\First Wep App\\Migrations\\20260714051700_intialcreat.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "20260714051700_intialcreat.cs",
+              "DocumentMoniker": "C:\\Users\\widaa\\OneDrive\\Desktop\\Backend-Soultion\\E-Commerce System EF Core\\First Wep App\\Migrations\\20260714051700_intialcreat.cs",
+              "RelativeDocumentMoniker": "..\\First Wep App\\Migrations\\20260714051700_intialcreat.cs",
+              "ToolTip": "C:\\Users\\widaa\\OneDrive\\Desktop\\Backend-Soultion\\E-Commerce System EF Core\\First Wep App\\Migrations\\20260714051700_intialcreat.cs",
+              "RelativeToolTip": "..\\First Wep App\\Migrations\\20260714051700_intialcreat.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-14T05:17:00.779Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ProjectContext.cs",
+              "DocumentMoniker": "C:\\Users\\widaa\\OneDrive\\Desktop\\Backend-Soultion\\E-Commerce System EF Core\\First Wep App\\ProjectContext.cs",
+              "RelativeDocumentMoniker": "..\\First Wep App\\ProjectContext.cs",
+              "ToolTip": "C:\\Users\\widaa\\OneDrive\\Desktop\\Backend-Soultion\\E-Commerce System EF Core\\First Wep App\\ProjectContext.cs",
+              "RelativeToolTip": "..\\First Wep App\\ProjectContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-07-14T05:07:44.43Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

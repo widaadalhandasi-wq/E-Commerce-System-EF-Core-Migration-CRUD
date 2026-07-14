@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Ecommerece _SoC")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+af5d900c257f8ae9ef0a6e239881cc6f24467887")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b8310be818ba598d9c78d82ec8be289f1489e513")]
 [assembly: System.Reflection.AssemblyProductAttribute("Ecommerece _SoC")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Ecommerece _SoC")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

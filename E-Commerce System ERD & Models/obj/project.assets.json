@@ -4107,23 +4107,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\hp\\.nuget\\packages\\": {},
+    "C:\\Users\\widaa\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\hp\\Desktop\\Backend-Soultion\\E-Commerce-System-EF-Core-Migration-CRUD\\E-Commerce System ERD & Models\\E-Commerce System ERD & Models.csproj",
+      "projectUniqueName": "C:\\Users\\widaa\\OneDrive\\Desktop\\Backend-Soultion\\E-Commerce System EF Core\\E-Commerce System ERD & Models\\E-Commerce System ERD & Models.csproj",
       "projectName": "E-Commerce System ERD & Models",
-      "projectPath": "C:\\Users\\hp\\Desktop\\Backend-Soultion\\E-Commerce-System-EF-Core-Migration-CRUD\\E-Commerce System ERD & Models\\E-Commerce System ERD & Models.csproj",
-      "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\hp\\Desktop\\Backend-Soultion\\E-Commerce-System-EF-Core-Migration-CRUD\\E-Commerce System ERD & Models\\obj\\",
+      "projectPath": "C:\\Users\\widaa\\OneDrive\\Desktop\\Backend-Soultion\\E-Commerce System EF Core\\E-Commerce System ERD & Models\\E-Commerce System ERD & Models.csproj",
+      "packagesPath": "C:\\Users\\widaa\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\widaa\\OneDrive\\Desktop\\Backend-Soultion\\E-Commerce System EF Core\\E-Commerce System ERD & Models\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\widaa\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -4150,7 +4150,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "10.0.300"
+      "SdkAnalysisLevel": "10.0.200"
     },
     "frameworks": {
       "net8.0": {
@@ -4188,30 +4188,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[8.0.27, 8.0.27]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[8.0.27, 8.0.27]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[8.0.27, 8.0.27]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[8.0.27, 8.0.27]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.300/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
