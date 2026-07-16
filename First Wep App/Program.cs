@@ -1,35 +1,79 @@
 
-namespace First_Wep_App
+using First_Wep_App;
+using FirstWebApp.Repositories;
+using FirstWebApp.Services;
+using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.EntityFrameworkCore;
+
+namespace FirstWebApp
 {
     public class Program
     {
         public static void Main(string[] args)
         {
-            var builder = WebApplication.CreateBuilder(args);
+            //1) services container ( place to register program services ) / dependency injection container
+            var builder = WebApplication.CreateBuilder(args); //start line of service container
 
             // Add services to the container.
 
+            //1-register context ( make an object )
+            builder.Services.AddDbContext<ProjectContext>(options =>
+            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+            //service lifetime
+            //Repo class
+            builder.Services.AddScoped<ProductRepo>();
+            //builder.Services.AddTransient<ProductRepo>();
+            //builder.Services.AddSingleton<ProductRepo>();
+            //builder.Services.AddScoped<CategoryRepo>();
+            //builder.Services.AddScoped<UserRepo>();
+            //builder.Services.AddScoped<ReviewRepo>();
+
+            //Services class
+            builder.Services.AddScoped<ProductService>();
+            //builder.Services.AddScoped<CategoryService>();
+            //builder.Services.AddScoped<UserService>();
+            //builder.Services.AddScoped<ReveiwService>();
+
+
+            //Controller class
             builder.Services.AddControllers();
-            // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+
+
+
+
+            // Swagger ---Accept the request
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
-            var app = builder.Build();
+            var app = builder.Build(); //end line of service container
+            ////////////////////////////////////////////////////////////////////////////
 
-            // Configure the HTTP request pipeline.
+
+
+            // 2)Configure the HTTP request pipeline / middleware pipline
+
+           //swagger ---check the service for each request
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
 
-            app.UseHttpsRedirection();
+            app.UseHttpsRedirection(); //middleware
 
-            app.UseAuthorization();
+            app.UseAuthorization(); //middleware
 
 
-            app.MapControllers();
+            app.MapControllers(); //middleware
+            //////////////////////////////////
 
+
+
+
+
+            //run application
             app.Run();
         }
     }
