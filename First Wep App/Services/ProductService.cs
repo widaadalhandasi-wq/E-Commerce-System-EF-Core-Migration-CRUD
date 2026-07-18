@@ -1,10 +1,13 @@
-﻿using FirstWebApp.Models;
+﻿using FirstWebApp.DTOs;
+using FirstWebApp.Models;
 using FirstWebApp.Repositories;
+using System.Security.Cryptography.Pkcs;
 
 namespace FirstWebApp.Services
 {
     public class ProductService
     {
+
 
         //ProductRepo repo = new ProductRepo();
 
@@ -17,16 +20,45 @@ namespace FirstWebApp.Services
 
 
 
+        //public List<ProductOutputDTO> GetAllProducts()
+        //{
+        //    List<Product> products = repo.GetAllProducts();
 
+        //    List<ProductOutputDTO> outputs = new List<ProductOutputDTO>();
 
-        public List<Product> GetAllProducts()
+        //    foreach (Product product in products)
+        //    {
+        //        ProductOutputDTO output = new ProductOutputDTO();
+
+        //        output.Price = product.Price;
+        //        output.Name = product.Name;
+        //        outputs.Add(output);
+        //    }
+        //    return outputs;
+        //}
+
+        public List<ProductOutputDTO> GetAllProducts()
         {
-            return repo.GetAllProducts();
+            return repo.GetAllProducts()
+                       .Select(product => new ProductOutputDTO
+                       {
+                           Name = product.Name,
+                           Price = product.Price
+                       })
+                       .ToList();
         }
 
-        public Product GetProductById(int id)
+
+        public ProductAllOutputDTO GetProductById(int id)
         {
-            return repo.GetProductById(id);
+            Product p = repo.GetProductById(id);
+
+            ProductAllOutputDTO output = new ProductAllOutputDTO();
+            output.Price = p.Price;
+            output.Name = p.Name;
+            output.Description = p.Description;
+
+            return output;
         }
 
 
@@ -37,7 +69,22 @@ namespace FirstWebApp.Services
             return product.Id;
         }
 
-        public bool UpdatePrice(int productId, int newPrice)
+
+        public int Create(ProductInputDTO product)
+        {
+
+            Product p = new Product();
+            p.Name = product.Name;
+            p.Price = product.Price;
+            p.Description = product.Description;
+            p.createdDate = DateTime.Now;
+            p.Count = 0;
+
+            repo.Add(p);
+            return p.Id;
+        }
+
+        public bool UpdateCount(int productId, int newCount)
         {
             Product product = repo.GetProductById(productId);
             if (product == null)
@@ -45,10 +92,10 @@ namespace FirstWebApp.Services
                 return false;
             }
 
-            product.Price = newPrice;
+            product.Count = newCount;
             repo.Update();
             return true;
-         
+
         }
 
 

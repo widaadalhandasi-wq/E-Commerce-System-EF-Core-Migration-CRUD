@@ -15,11 +15,6 @@ namespace FirstWebApp.Repositories
         }
 
 
-        //what i have achieved named: dependency inversion (principle of clean code ) ==> goal ( why )
-        // to be independent i have used a technique called : dependency injection => technique ( how )
-
-
-
 
 
         public List<Product> GetAllProducts()
