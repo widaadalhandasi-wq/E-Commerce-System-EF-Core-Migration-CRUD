@@ -18,25 +18,6 @@ namespace FirstWebApp.Services
             repo = _repo;
         }
 
-
-
-        //public List<ProductOutputDTO> GetAllProducts()
-        //{
-        //    List<Product> products = repo.GetAllProducts();
-
-        //    List<ProductOutputDTO> outputs = new List<ProductOutputDTO>();
-
-        //    foreach (Product product in products)
-        //    {
-        //        ProductOutputDTO output = new ProductOutputDTO();
-
-        //        output.Price = product.Price;
-        //        output.Name = product.Name;
-        //        outputs.Add(output);
-        //    }
-        //    return outputs;
-        //}
-
         public List<ProductOutputDTO> GetAllProducts()
         {
             return repo.GetAllProducts()
