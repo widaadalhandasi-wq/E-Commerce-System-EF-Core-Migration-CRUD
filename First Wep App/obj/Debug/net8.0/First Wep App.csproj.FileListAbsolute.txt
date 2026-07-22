@@ -280,3 +280,5 @@ C:\Users\hp\Desktop\Backend-Soultion\E-Commerce-System-EF-Core-Migration-CRUD\Fi
 C:\Users\hp\Desktop\Backend-Soultion\E-Commerce-System-EF-Core-Migration-CRUD\First Wep App\obj\Debug\net8.0\First We.151A437D.Up2Date
 C:\Users\hp\Desktop\Backend-Soultion\E-Commerce-System-EF-Core-Migration-CRUD\First Wep App\obj\Debug\net8.0\First Wep App.genruntimeconfig.cache
 C:\Users\hp\Desktop\Backend-Soultion\E-Commerce-System-EF-Core-Migration-CRUD\First Wep App\obj\Debug\net8.0\ref\First Wep App.dll
+C:\Users\hp\Desktop\Backend-Soultion\E-Commerce-System-EF-Core-Migration-CRUD\First Wep App\bin\Debug\net8.0\BCrypt-Net-Next.dll
+C:\Users\hp\Desktop\Backend-Soultion\E-Commerce-System-EF-Core-Migration-CRUD\First Wep App\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("First Wep App")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+50f84943298baa158f6acb6215e19878d46392a0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8864af712b8f3f55036977c0867fdf953099260e")]
 [assembly: System.Reflection.AssemblyProductAttribute("First Wep App")]
 [assembly: System.Reflection.AssemblyTitleAttribute("First Wep App")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
